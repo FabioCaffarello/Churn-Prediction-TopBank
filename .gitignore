@@ -1,3 +1,6 @@
+#Virtual Documents
+.virtual_documents/*
+
 #zip folder
 zip/
 
