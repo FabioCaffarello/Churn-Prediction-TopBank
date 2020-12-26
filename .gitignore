@@ -4,6 +4,9 @@
 #zip folder
 zip/
 
+#Third Cycle
+02-Notebooks/03-Third_Cycle_CRISP/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
