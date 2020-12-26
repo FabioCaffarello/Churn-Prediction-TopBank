@@ -143,10 +143,10 @@ class churn_pipeline(object):
 		yhat_proba_level_02 = model_level_02.predict_proba(dataset)[:,1]
 		df_result_level_02 = pd.DataFrame({'yhat_proba_level_02': yhat_proba_level_02})
 
-		df_result_level_02['final_result'] = df_result_level_02['yhat_proba_level_02'].apply(lambda row: 1 if row >= 0.52 else 0)
-		df_result = pd.concat([orinal_dataset, df_result_level_02['final_result']], axis=1)
+		df_result_level_02['final_result'] = df_result_level_02['yhat_proba_level_02'].apply(lambda row: 1 if row >= 0.47 else 0)
+		df_result = pd.concat([orinal_dataset, df_result_level_02[['final_result', 'yhat_proba_level_02']]], axis=1)
 		df_result = df_result[['CustomerId', 'Surname', 'CreditScore', 'Geography',
 							   'Gender', 'Age', 'Tenure', 'Balance', 'NumOfProducts', 'HasCrCard',
-							   'IsActiveMember', 'EstimatedSalary', 'final_result']]
+							   'IsActiveMember', 'EstimatedSalary', 'yhat_proba_level_02', 'final_result']]
 
 		return df_result.to_json(orient='records', date_format='iso')
